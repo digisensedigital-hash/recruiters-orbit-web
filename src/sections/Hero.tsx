@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import Orbit from "../components/common/Orbit"
 import DashboardPreview from "../components/common/DashboardPreview"
+import { Link } from "react-router-dom"
 
 export default function Hero() {
   return (
@@ -52,9 +53,11 @@ export default function Hero() {
             Start Free Trial
           </button>
 
-          <button className="border border-white/20 px-6 py-3 rounded-lg hover:bg-white/5 transition">
-            Book Demo
-          </button>
+          <Link to="/book-demo">
+            <button className="border border-white/20 px-6 py-3 rounded-lg hover:bg-white/5 transition">
+              Book Demo
+            </button>
+          </Link>
         </motion.div>
 
       </div>

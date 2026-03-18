@@ -1,4 +1,6 @@
 import Reveal from "../components/common/Reveal"
+import { Link } from "react-router-dom"
+
 export default function CTA() {
   return (
 
@@ -26,9 +28,12 @@ export default function CTA() {
                 Start Free Trial
             </button>
 
-            <button className="border border-white/20 px-8 py-3 rounded-lg hover:bg-white/5 transition">
-                Book Demo
-            </button>
+            <Link
+            to="/book-demo"
+            className="border border-white/20 px-6 py-3 rounded-lg hover:bg-white/5 transition inline-flex items-center justify-center"
+            >
+            Book Demo
+            </Link>
 
             </div>
 
