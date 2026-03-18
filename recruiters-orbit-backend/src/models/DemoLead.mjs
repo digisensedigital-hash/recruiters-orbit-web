@@ -37,9 +37,65 @@ const demoLeadSchema = new mongoose.Schema(
       default: "",
     },
 
+    currentHiringMethod: {
+      type: String,
+      enum: ["excel", "ats", "crm", "manual", ""],
+      default: "",
+    },
+
+    timeline: {
+      type: String,
+      enum: ["immediate", "1_month", "exploring", ""],
+      default: "",
+    },
+
     message: {
       type: String,
       default: "",
+    },
+
+    // 🎯 SALES INTELLIGENCE
+    score: {
+      type: Number,
+      default: 0,
+    },
+
+    priority: {
+      type: String,
+      enum: ["low", "medium", "high"],
+      default: "low",
+    },
+
+    // 🧑‍💼 OWNERSHIP
+    assignedTo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      default: null,
+    },
+
+    // 📅 FOLLOW-UP SYSTEM
+    lastContactedAt: {
+      type: Date,
+      default: null,
+    },
+
+    nextFollowUpAt: {
+      type: Date,
+      default: null,
+    },
+
+    // 🔗 CONVERSION PIPELINE
+    convertedToClientId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Client",
+      default: null,
+    },
+
+    // 🌍 MARKETING TRACKING
+    utm: {
+      source: String,
+      medium: String,
+      campaign: String,
     },
 
     status: {
