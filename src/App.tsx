@@ -18,40 +18,51 @@ import Particles from "./components/common/Particles"
 function Landing() {
   return (
     <div className="min-h-screen bg-[#050510] text-white relative overflow-x-hidden">
-      
+
       {/* GLOBAL DEPTH */}
       <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-purple-700/20 blur-[150px] rounded-full" />
       <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-cyan-500/20 blur-[150px] rounded-full" />
 
+      {/* BACKGROUND EFFECTS */}
       <CursorGlow />
+
       <div className="pointer-events-none fixed inset-0 opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-      <Particles />
+      {/* ✅ FIX: PARTICLES ISOLATED (CRITICAL) */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Particles />
+      </div>
 
+      {/* ✅ FIXED NAVBAR */}
       <Navbar />
 
-      {/* HERO FLOW */}
-      <Hero />
-      <TrustStrip />
-      <Problem />
-      <Solution />
+      {/* ✅ CONTENT OFFSET */}
+      <div className="pt-20">
 
-      {/* 🔥 SCROLL TARGETS */}
-      <section id="features">
-        <Features />
-      </section>
+        {/* HERO FLOW */}
+        <Hero />
+        <TrustStrip />
+        <Problem />
+        <Solution />
 
-      <section id="how-it-works">
-        <HowItWorks />
-      </section>
+        {/* 🔥 SCROLL TARGETS */}
+        <section id="features">
+          <Features />
+        </section>
 
-      <section id="pricing">
-        <Pricing />
-      </section>
+        <section id="how-it-works">
+          <HowItWorks />
+        </section>
 
-      {/* CTA + FOOTER */}
-      <CTA />
-      <Footer />
+        <section id="pricing">
+          <Pricing />
+        </section>
+
+        {/* CTA + FOOTER */}
+        <CTA />
+        <Footer />
+      </div>
+
     </div>
   )
 }
