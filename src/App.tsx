@@ -14,7 +14,7 @@ import CTA from "./sections/CTA"
 import CursorGlow from "./components/common/CursorGlow"
 import Particles from "./components/common/Particles"
 
-// ✅ Your existing landing wrapped here
+// ✅ LANDING PAGE
 function Landing() {
   return (
     <div className="min-h-screen bg-[#050510] text-white relative overflow-x-hidden">
@@ -29,20 +29,34 @@ function Landing() {
       <Particles />
 
       <Navbar />
+
+      {/* HERO FLOW */}
       <Hero />
       <TrustStrip />
       <Problem />
       <Solution />
-      <Features />
-      <HowItWorks />
-      <Pricing />
+
+      {/* 🔥 SCROLL TARGETS */}
+      <section id="features">
+        <Features />
+      </section>
+
+      <section id="how-it-works">
+        <HowItWorks />
+      </section>
+
+      <section id="pricing">
+        <Pricing />
+      </section>
+
+      {/* CTA + FOOTER */}
       <CTA />
       <Footer />
     </div>
   )
 }
 
-// ✅ Routing layer added
+// ✅ ROUTING
 export default function App() {
   return (
     <Routes>

@@ -14,6 +14,21 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const closeMenu = () => setOpen(false)
+
+  // ✅ Native smooth scroll
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) {
+      const yOffset = -80
+      const y =
+        el.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+      window.scrollTo({ top: y, behavior: "smooth" })
+    }
+    setOpen(false)
+  }
+
   return (
     <nav
       className={`w-full px-6 md:px-8 transition-all duration-300 sticky top-0 z-50
@@ -33,28 +48,47 @@ export default function Navbar() {
 
         {/* DESKTOP NAV */}
         <div className="hidden md:flex items-center gap-10 text-sm text-gray-400">
-          <a href="#" className="hover:text-white transition">
-            Product
-          </a>
-          <a href="#" className="hover:text-white transition">
+
+          <button
+            onClick={() => scrollToSection("features")}
+            className="hover:text-white transition"
+          >
+            Features
+          </button>
+
+          <button
+            onClick={() => scrollToSection("how-it-works")}
+            className="hover:text-white transition"
+          >
+            How It Works
+          </button>
+
+          <button
+            onClick={() => scrollToSection("pricing")}
+            className="hover:text-white transition"
+          >
             Pricing
-          </a>
-          <a href="#" className="hover:text-white transition">
-            Contact
-          </a>
+          </button>
+
         </div>
 
         {/* RIGHT SIDE */}
         <div className="flex items-center gap-4">
           {/* DESKTOP CTA */}
           <div className="hidden md:flex items-center gap-5">
-            <button className="text-sm text-gray-400 hover:text-white transition">
+
+            <a
+              href="https://recruitersorbit.com/crm/login.php"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-gray-400 hover:text-white transition"
+            >
               Login
-            </button>
+            </a>
 
             <Link to="/book-demo">
               <button className="bg-gradient-to-r from-purple-500 to-cyan-500 px-5 py-2.5 rounded-xl text-sm font-medium shadow-[0_8px_25px_rgba(139,92,246,0.3)] hover:scale-105 active:scale-95 transition-all">
-                Book Demo
+                Book Demo 🚀
               </button>
             </Link>
           </div>
@@ -93,7 +127,7 @@ export default function Navbar() {
               animate={{ opacity: 0.6 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black z-40"
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
             />
 
             {/* MENU PANEL */}
@@ -104,25 +138,31 @@ export default function Navbar() {
               transition={{ duration: 0.25 }}
               className="absolute left-0 top-full w-full bg-[#050510] border-b border-white/10 z-50 px-6 py-6 flex flex-col gap-5 text-gray-300"
             >
-              <a href="#" onClick={() => setOpen(false)}>
-                Product
-              </a>
-              <a href="#" onClick={() => setOpen(false)}>
+              <button onClick={() => scrollToSection("features")}>
+                Features
+              </button>
+
+              <button onClick={() => scrollToSection("how-it-works")}>
+                How It Works
+              </button>
+
+              <button onClick={() => scrollToSection("pricing")}>
                 Pricing
-              </a>
-              <a href="#" onClick={() => setOpen(false)}>
-                Contact
-              </a>
+              </button>
 
               <div className="flex flex-col gap-3 mt-4">
-                <button className="text-left">Login</button>
-
-                <Link
-                  to="/book-demo"
-                  onClick={() => setOpen(false)}
+                <a
+                  href="https://recruitersorbit.com/crm/login.php"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenu}
                 >
+                  Login
+                </a>
+
+                <Link to="/book-demo" onClick={closeMenu}>
                   <button className="w-full bg-gradient-to-r from-purple-500 to-cyan-500 py-2.5 rounded-lg">
-                    Book Demo
+                    Book Demo 🚀
                   </button>
                 </Link>
               </div>
